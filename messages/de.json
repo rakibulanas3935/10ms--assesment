@@ -1,0 +1,14 @@
+{
+    "HomePage": {
+      "title": "Hello world!",
+      "about": "Go to the about page"
+    },
+    "Header": {
+      "home": "Startseite",
+      "about": "Über uns",
+      "contact": "Kontakt",
+      "login": "Anmelden",
+      "signup": "Registrieren"
+    }
+
+  }
