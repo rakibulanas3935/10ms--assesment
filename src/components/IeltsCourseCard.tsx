@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Clock, PlayCircle, Video } from 'lucide-react';
+import CourseOverview from './CourseOverview';
 
 export default function IeltsCourseCard({ data }: { data: any }) {
   const { image, name, description } = data?.data?.sections[2]?.values[0];
@@ -37,7 +38,9 @@ export default function IeltsCourseCard({ data }: { data: any }) {
               dangerouslySetInnerHTML={{ __html: description }}
             />
           </div>
+          
         </div>
+        <CourseOverview cards={data?.data?.sections[3]?.values}/>
       </div>
 
       <motion.div
