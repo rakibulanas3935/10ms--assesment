@@ -20,8 +20,10 @@
     "motion": "^12.23.9",
     "next": "15.0.3",
     "next-intl": "^3.25.3",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "or": "^0.2.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-i18next": "^15.6.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"
   },

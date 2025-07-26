@@ -33,7 +33,7 @@ const CourseOverview = ({
   heading = 'কোর্সটি যেভাবে সাজানো হয়েছে',
 }: Props) => {
   return (
-    <section className="w-full py-10 px-4 sm:px-6 lg:px-16 bg-white">
+    <section className="w-full cursor-pointer py-10 px-4 sm:px-6 lg:px-16 bg-white">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
