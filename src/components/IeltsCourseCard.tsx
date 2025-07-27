@@ -85,7 +85,7 @@ export default function IeltsCourseCard() {
 					initial={{ opacity: 0, y: 40 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5 }}
-					className="bg-white max-w-xl ms-auto h-screen mx-auto lg:-mt-36 rounded-lg overflow-hidden shadow-lg border lg:w-1/3"
+					className="bg-white w-full md:max-w-xl ms-auto h-screen mx-auto lg:-mt-36 rounded-lg overflow-hidden shadow-lg border lg:w-1/3"
 				>
 					{/* Top Banner */}
 					<div className="relative w-full h-64 bg-gray-100">
