@@ -62,7 +62,7 @@ export default function CourseContent() {
 
       <div className="border rounded-lg overflow-hidden bg-white divide-y">
         {courseSections.map((section, index) => (
-          <div key={index}>
+          <div key={index+1}>
             {/* Accordion Header */}
             <button
               className="w-full text-left px-6 py-4 font-semibold bg-white hover:bg-gray-50 flex justify-between items-center"

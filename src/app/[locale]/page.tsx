@@ -2,12 +2,13 @@ import HomeClient from "@/components/HomeClient";
 import IeltsCourseCard from "@/components/IeltsCourseCard";
 import { getCourseData } from "@/lib/utils";
 
-type Props = {
-	params: { locale: "en" | "bn" };
-};
+// type Props = {
+//   params: Promise<{ locale: "en" | "bn" }>;
+// };
 
-export default async function Page({ params }: Props) {
-	const courseData = await getCourseData(params.locale);
+
+export default async function Page() {
+	const courseData = await getCourseData();
 	return (
 		<>
 			<HomeClient data={courseData} />

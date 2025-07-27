@@ -15,18 +15,18 @@ type Props = {
   heading?: string;
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: index * 0.15,
-      duration: 0.5,
-      ease: 'easeOut',
-    },
-  }),
-};
+// const cardVariants = {
+//   hidden: { opacity: 0, y: 40 },
+//   visible: (index: number) => ({
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       delay: index * 0.15,
+//       duration: 0.5,
+//       ease: 'easeOut',
+//     },
+//   }),
+// };
 
 const CourseOverview = ({
   cards,
@@ -54,7 +54,7 @@ const CourseOverview = ({
             custom={index}
             initial="hidden"
             whileInView="visible"
-            variants={cardVariants}
+            // variants={cardVariants}
             viewport={{ once: true }}
           >
             <div className="min-w-[40px] h-[40px] relative mt-1">

@@ -12,7 +12,7 @@ export async function getCourseData(locale: 'en' | 'bn' = 'bn') {
     const response = await axios.get(
       'https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course',
       {
-        params: { lang: 'en' },
+        params: { lang: locale||'en' },
         headers: {
           'X-TENMS-SOURCE-PLATFORM': 'web',
         },
