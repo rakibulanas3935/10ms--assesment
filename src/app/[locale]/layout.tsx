@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 import "./globals.css";
+import { CourseProvider } from "@/context/CourseContext";
 
 export default async function LocaleLayout({
 	children,
@@ -16,7 +17,6 @@ export default async function LocaleLayout({
 }) {
 	// Ensure that the incoming `locale` is valid
 	const { locale } = params;
-	console.log("locale",locale)
 	if (!routing.locales.includes(locale)) {
 		notFound();
 	}
@@ -29,9 +29,11 @@ export default async function LocaleLayout({
 		<html lang={locale}>
 			<body>
 				<NextIntlClientProvider messages={messages}>
-					<Header />
-					{children}
-					<Footer />
+					<CourseProvider>
+						<Header />
+						{children}
+						<Footer />
+					</CourseProvider>
 				</NextIntlClientProvider>
 			</body>
 		</html>

@@ -9,13 +9,15 @@ interface Outcome {
 
 interface LearningOutcomeProps {
 	outcomes: Outcome[];
+	heading?: string;
 }
 
-export default function LearningOutcome({ outcomes }: LearningOutcomeProps) {
+
+export default function LearningOutcome({ outcomes,heading = 'কোর্সটি যেভাবে সাজানো হয়েছে', }: LearningOutcomeProps) {
 	return (
 		<section className="w-full px-4 sm:px-6 lg:px-16 py-10 bg-white">
-			<h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#2563eb] mb-6">
-				What you will learn by doing the course
+			<h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-6">
+				{heading}
 			</h2>
 
 			<div className="border rounded-lg p-6 grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white">

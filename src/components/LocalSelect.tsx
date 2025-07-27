@@ -26,6 +26,7 @@ export default function LocalSelect({ defaultValue }: Props) {
 			{ pathname, params },
 			{ locale: value as Locale }
 		);
+		router.refresh();
 	};
 
 	return (

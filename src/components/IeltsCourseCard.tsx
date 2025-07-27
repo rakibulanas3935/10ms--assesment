@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
@@ -11,42 +12,51 @@ import LearningOutcome from "./LearningOutcome";
 import CourseContent from "./CoursePreview";
 import CourseFeatures from "./CourseFeatures";
 import CoursePricingCard from "./CoursePricingCard";
+import { useCourseContext } from "@/context/CourseContext";
 
-export default function IeltsCourseCard({ data }: { data: any }) {
-	const { image, name, description } = data?.data?.sections[2]?.values[0];
-	const media = data?.data?.media || [];
+export default function IeltsCourseCard() {
+	const { course, loading, error } = useCourseContext();
 	const [showStickyCard, setShowStickyCard] = useState(false);
+	const [banner, setBanner] = useState<string>("/ielts-cover.png"); // default fallback
 
-  useEffect(() => {
-	const handleScroll = () => {
-		const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-		// Detect if scrolled to bottom (or near bottom with buffer)
-		if (scrollTop + clientHeight >= scrollHeight - 10) {
-			setShowStickyCard(true);
-		} else {
-			setShowStickyCard(false);
+	useEffect(() => {
+		if (course?.data?.media) {
+			const first = course.data.media.find(
+				(m: any) => m.resource_type === "image" || m.thumbnail_url
+			);
+			setBanner(first?.thumbnail_url || first?.resource_value || "/ielts-cover.png");
 		}
-	};
+	}, [course]);
 
-	window.addEventListener("scroll", handleScroll);
-	return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+	useEffect(() => {
+		const handleScroll = () => {
+			const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+			if (scrollTop + clientHeight >= scrollHeight - 10) {
+				setShowStickyCard(true);
+			} else {
+				setShowStickyCard(false);
+			}
+		};
 
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
-
-	const getInitialBanner = () => {
-		const first = media.find(
-			(m: any) => m.resource_type === "image" || m.thumbnail_url
+	if (loading || !course) {
+		return (
+			<div className="flex justify-center items-center h-96">
+				<p className="text-lg font-medium">লোড হচ্ছে...</p>
+			</div>
 		);
-		return first?.thumbnail_url || first?.resource_value || "/ielts-cover.png";
-	};
+	}
 
-	const [banner, setBanner] = useState<string>(getInitialBanner());
+	const media = course.data?.media || [];
+	const { image, name, description } = course.data?.sections[2]?.values[0] || {};
 
 	return (
 		<div className="flex flex-col lg:flex-row gap-6  px-4 pb-6">
 			<div className="w-full mt-4 lg:w-2/3">
-				<h2 className="text-xl font-bold mb-3">কোর্স ইন্সট্রাক্টর</h2>
+				<h2 className="text-xl font-bold mb-3">{course?.data?.sections[2]?.name}</h2>
 				<div className="flex items-center gap-4 p-4 border rounded-lg">
 					<div className="w-16 h-16 relative">
 						<Image
@@ -64,10 +74,10 @@ export default function IeltsCourseCard({ data }: { data: any }) {
 						/>
 					</div>
 				</div>
-				<CourseOverview cards={data?.data?.sections[3]?.values} />
-				<LearningOutcome outcomes={data?.data?.sections[5]?.values} />
+				<CourseOverview cards={course.data?.sections[3]?.values} heading={course.data?.sections[3]?.name}/>
+				<LearningOutcome outcomes={course.data?.sections[5]?.values} heading={course.data?.sections[5]?.name}/>
 				<CourseContent />
-				<CourseFeatures />
+				<CourseFeatures cousrseFeature={course.data?.sections[8]?.values} heading={course.data?.sections[8]?.name}/>
 			</div>
 
 			{!showStickyCard && (
