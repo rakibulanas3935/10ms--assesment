@@ -1,36 +1,48 @@
+import Image from "next/image";
+
 /* eslint-disable @next/next/no-img-element */
 interface Instructor {
-  id: string;
-  name: string;
-  bio?: string;
-  avatarUrl?: string;
+	id: string;
+	name: string;
+	bio?: string;
+	image: string;
+	description?: string;
 }
 
 interface InstructorsProps {
-  instructors: Instructor[];
+	instructors: Instructor[];
+	heading: "";
 }
 
-export default function Instructors({ instructors }: InstructorsProps) {
-  return (
-    <section>
-      <h2 className="text-2xl font-semibold my-4">Instructors</h2>
-      <ul className="space-y-4">
-        {instructors.map(({ id, name, bio, avatarUrl }) => (
-          <li key={id} className="flex items-center space-x-4">
-            {avatarUrl && (
-              <img
-                src={avatarUrl}
-                alt={name}
-                className="w-12 h-12 rounded-full"
-              />
-            )}
-            <div>
-              <h3 className="font-bold">{name}</h3>
-              {bio && <p className="text-sm text-gray-600">{bio}</p>}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
+export default function Instructors({
+	instructors,
+	heading,
+}: InstructorsProps) {
+	return (
+		<section className="w-full cursor-pointer py-10 px-4 sm:px-6 lg:px-16 bg-white">
+			<h2 className="text-2xl md:text-3xl font-semibold mb-6 text-black">{heading}</h2>
+			{instructors.map((instructor) => (
+				<div
+					key={instructor.id}
+					className="flex items-center gap-4 p-4 border rounded-lg mb-4"
+				>
+					<div className="w-16 h-16 relative">
+						<Image
+							src={instructor.image}
+							alt={instructor.name}
+							fill
+							className="rounded-full object-cover"
+						/>
+					</div>
+					<div>
+						<p className="font-semibold">{instructor.name}</p>
+						<div
+							className="text-sm text-gray-600 prose prose-invert"
+							dangerouslySetInnerHTML={{ __html: instructor.description || '' }}
+						/>
+					</div>
+				</div>
+			))}
+		</section>
+	);
 }

@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 
 import "./globals.css";
 import { CourseProvider } from "@/context/CourseContext";
+import SeoHead from "@/components/SeoHead";
 
 export default async function LocaleLayout({
 	children,
@@ -30,6 +31,7 @@ export default async function LocaleLayout({
 			<body>
 				<NextIntlClientProvider messages={messages}>
 					<CourseProvider>
+						<SeoHead/>
 						<Header />
 						{children}
 						<Footer />

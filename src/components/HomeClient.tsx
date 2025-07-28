@@ -14,7 +14,7 @@ export default function HomeClient() {
 	if (loading || !course) {
 		return (
 			<div className="flex justify-center items-center h-96 bg-[#0a0a1a]">
-				<p className="text-white text-lg font-medium">লোড হচ্ছে...</p>
+				<p className="text-white text-lg font-medium">Loading...</p>
 			</div>
 		);
 	}

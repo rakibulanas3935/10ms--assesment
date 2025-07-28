@@ -19,14 +19,14 @@ interface CourseFeatureProps {
 
 export default function CourseFeatures({
   cousrseFeature,
-  heading = 'কোর্সটি যেভাবে সাজানো হয়েছে',
+  heading = '',
 }: CourseFeatureProps) {
 
   console.log(cousrseFeature)
   return (
-    <section className="px-4 py-12 max-w-6xl mx-auto">
+    <section className="w-full px-4 sm:px-6 lg:px-16 py-10 bg-white">
       <motion.h2
-        className="text-2xl sm:text-3xl font-bold text-blue-700 mb-8"
+        className="text-2xl md:text-3xl font-semibold mb-6 text-black"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
